@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>function</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript">
+        addEventListener("load", function () { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!--// Meta tag Keywords -->
+
+    <link rel="stylesheet" href="static/css/lightbox.css"> <!-- team-CSS -->
+    <!-- css files -->
+    <link rel="stylesheet" href="static/css/bootstrap.css"> <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="static/css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" href="static/css/animate.css"> <!--  -->
+    <link rel="stylesheet" href="static/css/bg.css"> <!--  -->
+    <link rel="stylesheet" href="static/css/loading.css"> <!-- loading -->
+    <!-- //css files -->
+
+    <!-- web-fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
+        rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+        rel="stylesheet">
+    <!-- //web-fonts -->
+    <style>
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .search-input {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-buttons {
+            display: flex;
+            margin-left: 10px;
+        }
+
+        .search-button,
+        .voice-button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #e01f3d;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .voice-button {
+            background-color: #007bff;
+        }
+
+        .results-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .results-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 15px; /* 添加圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+        }
+
+        .results-info {
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .voice-results {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* 图片搜索部分的美化 */
+        .image-upload-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-upload-section h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .person-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 2px dashed #ced4da;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .upload-button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button:hover {
+            background-color: #218838;
+        }
+
+        .image-upload {
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1><a href="index.html">Speech-based image retrieval system</a></h1>
+            </div>
+            <div class="top-nav-text">
+                <div class="nav-contact-w3ls"><i class="fa fa-phone" aria-hidden="true"></i>
+                    <p>+86 18937082731</p>
+                </div>
+            </div>
+            <!-- navbar-header -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hvr-underline-from-center active" href="index.html">Home</a></li>
+                </ul>
+            </div>
+
+            <div class="clearfix"> </div>
+        </nav>
+
+    </div>
+    <div class="banner1"></div>
+    <div class="about-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a><i>></i></li>
+                <li>function</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 图片搜索部分 -->
+    <div class="container">
+        <div class="image-upload-section">
+            <h2>图片搜索</h2>
+            <div id="personContainer" class="person-container">
+                <!-- 动态生成上传区域 -->
+            </div>
+            <div class="buttons-container">
+                <button id="addPersonButton" class="upload-button">添加一个人</button>
+                <button id="submitImagesButton" class="upload-button">搜索</button>
+            </div>
+        </div>
+    </div>
+    <!-- inner-page -->
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Enter your search query here">
+            <div class="search-buttons">
+                <button id="searchButton" class="search-button">Search</button>
+                <button id="voiceButton" class="voice-button"><i class="fa fa-microphone"></i></button>
+            </div>
+        </div>
+        <div class="voice-results" id="voiceResults">语音识别结果将在这里显示</div>
+        <div class="results-container" id="resultsContainer" style="display: none;">
+            <h2 class="search-result-title">最可能的搜索结果</h2>
+            <div class="row" id="resultsRow"></div> <!-- 用于放置多个搜索结果 -->
+        </div>
+        <div class="video-container">
+            <video id="videoPlayer" controls>
+                <source src="{{ url_for('static', filename='videos/video.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- inner-page -->
+    <!-- footer -->
+    <footer>
+        <div class="agileits-w3layouts-footer">
+            <div class="container">
+                <div class="col-md-4 w3-agile-grid">
+                    <h5>About Us</h5>
+                    <p>本项目由同济大学软件学院协助完成，如有问题请联系邮箱2252709@tongji.edu.cn</p>
+                    <div class="footer-agileinfo-social">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#"><i class="fa fa-vk"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 w3-agile-grid">
+                    <h5>Address</h5>
+                    <div class="w3-address">
+                        <div class="w3-address-grid">
+                            <div class="w3-address-left">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="w3-address-right">
+                                <h6>Phone Number</h6>
+                                <p>+86 18937082731</p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="w3-address-grid">
+                            <div class="w3-address-left">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="w3-address-right">
+                                <h6>Email Address</h6>
+                                <p>Email :<a href="mailto:example@email.com"> 2252709@tongji.edu.cn</a></p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="w3-address-grid">
+                            <div class="w3-address-left">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </div>
+                            <div class="w3-address-right">
+                                <h6>Location</h6>
+                                <p> 上海市嘉定区曹安公路4800号同济大学嘉定校区
+                                    Telephone : +86 021-65982200
+                                </p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>Copyright &copy; 2024.Company name All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- //footer -->
+
+    <!-- js-scripts -->
+    <!-- js -->
+    <script type="text/javascript" src="static/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap -->
+    <script src="static/js/jquery.popup.js"></script>
+    <script src="static/js/loading.js"></script>
+    <script src="static/js/lin_search.js"></script>
+    <script>
+        let personCount = 0; // 用于计数添加的人员数量
+        let imagesArray = []; // 用于存储每个人的图片
+
+        document.getElementById('addPersonButton').addEventListener('click', () => {
+            const personDiv = document.createElement('div');
+            personDiv.className = 'person-div';
+            personDiv.innerHTML = `
+                <h3>Person ${personCount + 1}</h3>
+                <input type="file" class="image-upload" id="person${personCount}" multiple accept="image/*">
+            `;
+            document.getElementById('personContainer').appendChild(personDiv);
+            imagesArray.push([]);
+            personCount++;
+        });
+
+        document.addEventListener('change', (event) => {
+            if (event.target && event.target.classList.contains('image-upload')) {
+                const files = event.target.files;
+                const personIndex = event.target.id.replace('person', '');
+                
+                for (let i = 0; i < files.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        imagesArray[personIndex].push(e.target.result);
+                    };
+                    reader.readAsDataURL(files[i]);
+                }
+            }
+        });
+
+        document.getElementById('submitImagesButton').addEventListener('click', () => {
+            const imageInputs = document.querySelectorAll('.image-upload');
+            const imagesArray = [];
+
+            imageInputs.forEach((input) => {
+                const files = input.files;
+                for (let i = 0; i < files.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        imagesArray.push(e.target.result);
+                    };
+                    reader.readAsDataURL(files[i]);
+                }
+            });
+
+            // 等待图片都加载完成后发送请求
+            setTimeout(() => {
+                fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ images: imagesArray })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('结果:', data);
+                    // 这里可以添加显示搜索结果的代码
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }, 1000); // 延时1秒，确保所有图片都加载完毕
+        });
+
+        const searchButton = document.getElementById('searchButton');
+        const voiceButton = document.getElementById('voiceButton');
+        const searchInput = document.getElementById('searchInput');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const searchResultImage = document.getElementById('searchResultImage');
+        const searchResultInfo = document.getElementById('searchResultInfo');
+        const voiceResults = document.getElementById('voiceResults');
+        const resultsRow = document.getElementById('resultsRow');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        let recognition;
+        let recognizing = false;
+
+        if (!('webkitSpeechRecognition' in window)) {
+            alert('Web Speech API is not supported by this browser. Please use Google Chrome.');
+        } else {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+
+            recognition.onstart = () => {
+                recognizing = true;
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error', event);
+                recognizing = false;
+            };
+
+            recognition.onend = () => {
+                recognizing = false;
+            };
+
+            recognition.onresult = (event) => {
+                let interim_transcript = '';
+                let final_transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        final_transcript += event.results[i][0].transcript;
+                    } else {
+                        interim_transcript += event.results[i][0].transcript;
+                    }
+                }
+                searchInput.value = final_transcript || interim_transcript;
+                voiceResults.textContent = final_transcript || interim_transcript; // 回显语音识别结果
+            };
+        }
+
+        voiceButton.addEventListener('click', () => {
+            if (recognizing) {
+                recognition.stop();
+            } else {
+                recognition.start();
+            }
+        });
+
+        searchButton.addEventListener('click', () => {
+        const query = searchInput.value;
+        if (query) {
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultImages = data.images;
+                const resultTimes = data.times;
+
+                resultsRow.innerHTML = ''; // 清空结果行
+
+                resultImages.forEach((imageData, index) => {
+                    const colDiv = document.createElement('div');
+                    colDiv.classList.add('col-md-6', 'result-item');
+
+                    const imageElement = document.createElement('img');
+                    imageElement.src = `data:image/jpeg;base64,${imageData}`;
+                    imageElement.classList.add('results-image');
+
+                    const timeElement = document.createElement('div');
+                    timeElement.textContent = `Time: ${resultTimes[index]}s`;
+                    timeElement.classList.add('results-info');
+
+                    const playButton = document.createElement('button');
+                    playButton.textContent = 'Play';
+                    playButton.classList.add('play-button');
+                    playButton.addEventListener('click', () => {
+                        videoPlayer.currentTime = resultTimes[index]; // 跳转到视频的指定时间
+                        videoPlayer.play(); // 播放视频
+                    });
+
+                    colDiv.appendChild(imageElement);
+                    colDiv.appendChild(timeElement);
+                    colDiv.appendChild(playButton);
+
+                    resultsRow.appendChild(colDiv);
+                });
+
+                resultsContainer.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
+    </script>
+    <!-- //js -->
+    <!-- //js-scripts -->
+
+    <!--script for team-->
+    <script src="static/js/lightbox-plus-jquery.min.js"> </script>
+    <script src="static/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion           
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+    <!--//script for team-->
+
+    <!-- start-smoth-scrolling -->
+    <script src="static/js/SmoothScroll.min.js"></script>
+    <script type="text/javascript" src="static/js/move-top.js"></script>
+    <script type="text/javascript" src="static/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!-- start-smoth-scrolling -->
+
+    <script type="text/javascript">
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("launch-team");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
